@@ -14,3 +14,6 @@
 
     default[:basicsetup][:admin][:home]      = "/home/"+default[:basicsetup][:admin][:user]
     default[:basicsetup][:admin][:shell]      = "/bin/bash"
+
+# sailfish
+default[:basicsetup][:sailfish][:index][:create_method] = "executecommand"
