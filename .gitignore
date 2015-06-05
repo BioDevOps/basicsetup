@@ -75,3 +75,6 @@ tramp
 Session.vim
 .netrwhist
 *~
+
+# chef
+cookbooks/
