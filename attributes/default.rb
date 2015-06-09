@@ -17,3 +17,5 @@
 
 # sailfish
 default[:basicsetup][:sailfish][:index][:create_method] = "executecommand"
+default[:basicsetup][:sailfish][:index][:download][:filename] = "sailfish_index_20150529.tar.gz"
+default[:basicsetup][:sailfish][:index][:download][:url]="http://q-brain.riken.jp/vm/sailfish_index_20150529.tar.gz"
