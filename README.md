@@ -23,7 +23,12 @@ vagrant provision
 
 I'll hope to fix it and robust to finish the cookbooks.
 
-### Time to setup using vagrant
+### I want to change recipe
+
+
+
+
+### How long does it take to setup using vagrant
 
 When I executed ***vagrant up*** , it tooks 1.5 hour.
 It does not need to any interaction.
