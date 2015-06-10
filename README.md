@@ -52,4 +52,4 @@ see [TODO](TODO.md)
 # License
 
 Copyright (c) [2015] [Manabu ISHII] and RIKEN Bioinformatics Research Unit
-Released under the [Apache2 license]
+Released under the [Apache License Version 2.0]
