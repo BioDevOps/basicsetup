@@ -37,7 +37,7 @@ Just type command and wait.
 I think most of time takes to download compressed(gzip) sailfish index (11G)
 and extract it.
 
-I test it with the VM which is assigned 2 CPU and 8GB RAM.
+I test it with the VM which is assigned 4 CPU and 8GB RAM.
 I write these assignment to Vagrantfile.
 
 #### sailfish index create by execute sailfish command.
