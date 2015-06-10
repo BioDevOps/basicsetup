@@ -42,7 +42,7 @@ If you have enough resource, you can choose the method of create sailfish index
 
 ## TODO
 
-see [TODO]
+see [TODO](TODO.md)
 
 # License
 
