@@ -22,7 +22,7 @@ elsif sailfish_index_create_method == "download"
     mode   0644
     not_if "test -f #{Chef::Config['file_cache_path']}/#{sailfish_index_filename}"
   end
-  sailfish_index_command = "tar zxvf #{Chef::Config['file_cache_path']}/#{sailfish_index_url} -C /usr/local/galaxy/bit_tools/"
+  sailfish_index_command = "tar zxvf #{Chef::Config['file_cache_path']}/#{sailfish_index_filename} -C /usr/local/galaxy/bit_tools/"
 else
   sailfish_index_command = "touch /tmp/nevermatch.txt"
 end
@@ -30,6 +30,7 @@ script "sailfish_index_create" do
   environment  ({ "HOME" => "/usr/local/galaxy" })
   interpreter "bash"
   user        "galaxy"
+  group        "galaxy"
   code <<-EOL
     #{sailfish_index_command}
     echo "#{sailfish_index_create_method}" > /tmp/method
