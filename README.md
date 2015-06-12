@@ -7,6 +7,24 @@ vagrant plugin install vagrant-chef-zero
 vagrant plugin install vagrant-omnibus
 ```
 
+## Our develop environment
+
+virtualbox
+
+vagrant version is
+
+```
+$ vagrant -v
+Vagrant 1.6.5
+```
+
+vagrant plugins version are
+
+```
+vagrant-chef-zero (1.0.1)
+vagrant-omnibus (1.4.1)
+```
+
 # Setup using vagrant
 ```
 berks vendor cookbooks
