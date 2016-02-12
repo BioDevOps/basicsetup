@@ -4,7 +4,7 @@ maintainer_email 'Manabu ISHII'
 license          'Apache 2.0'
 description      'Installs/Configures basicsetup for bioinformatics'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
-version          '0.1.0'
+version          '1.0.0-alpha'
 
 depends 'build-essential', '= 2.1.3'
 depends 'java', '= 1.31.0'
