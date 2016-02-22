@@ -1,0 +1,106 @@
+---
+driver:
+  name: vagrant
+  customize:
+    memory: 4096
+    cpus: 4
+
+provisioner:
+  name: chef_solo
+  #chef_omnibus_install_options: ' -d /tmp/vagrant-cache/vagrant_omnibus'
+
+
+platforms:
+  #- name: ubuntu-12.04
+  - name: ubuntu-14.04
+    #driver:
+    #  vagrantfile_erb: Vagrantfile.erb
+    run_list:
+      #- recipe[timezone-ii]
+      #- recipe[ubuntu-change-source-list]
+      #- recipe[apt]
+    attributes:
+      java:
+        install_flavor: "openjdk"
+        jdk_version: 7
+      apt:
+        compile_time_update: true
+      build-essential:
+        compile_time: true
+      ubuntu:
+        mirror_site_url: "http://ftp.jaist.ac.jp/pub/Linux/ubuntu/"
+        version: "14.04"
+        need_deb_src: false
+        need_update: true
+
+suites:
+  - name: basicsetup
+    run_list:
+      - recipe[basicsetup::change-apt]
+      - recipe[ubuntu-change-source-list]
+      - recipe[apt]
+      - recipe[basicsetup]
+      - recipe[selinux::permissive]
+      - recipe[timezone-ii]
+      ##- recipe[build-essential]
+      - recipe[postgresql::server]
+      - recipe[postgresql::client]
+      - recipe[apache2]
+      - recipe[apache2::mod_authz_host]
+      - recipe[apache2::mod_access_compat]
+      - recipe[apache2::mod_proxy]
+      - recipe[apache2::mod_proxy_http]
+      - recipe[galaxy@1.1.0]
+      - recipe[galaxy-httpproxy@0.3.1]
+      - recipe[basicsetup::galaxy_bit_wf_2015_setup]
+      - recipe[basicsetup::galaxy_setup_local_env_sh]
+      #- recipe[basicsetup::setup_galaxy_directory]
+      #- recipe[basicsetup::Rinstall]
+      #- recipe[basicsetup::ubuntu_rnsaseqEnv]
+      #- recipe[basicsetup::galaxy_setup]
+      #- recipe[basicsetup::med-bio-install]
+      #- recipe[basicsetup::createmachineadminuser]
+    attributes:
+      tz: "Asia/Tokyo"
+      java:
+        install_flavor: "openjdk"
+        jdk_version: 7
+      apt:
+        compile_time_update: true
+      build-essential:
+        compile_time: true
+      ubuntu:
+        mirror_site_url: "http://ftp.jaist.ac.jp/pub/Linux/ubuntu/"
+        version: "14.04"
+        need_deb_src: false
+        need_update: true
+      postgresql:
+        password:
+          postgres: "galaxy"
+      galaxy_http_proxy:
+        galaxy_conf: "apache.2.4.galaxy.conf.erb"
+      galaxy:
+        user: "galaxy"
+        group: "galaxy"
+        admin_users: "admin@galaxy.org"
+        master_api_key: "thisismasterapikeychangeit"
+        #overwrite_run_sh: true
+        #overwrite_fetch_eggs_py: true
+        tool_dependency_dir: "./tool_dependency_directory"
+        #
+        #library_import_dir: "/usr/local/galaxy/import_data"
+        library_import_dir: "/usr/local/galaxy/galaxy-dist/config/import_data"
+        #
+        home: "/usr/local/galaxy"
+        #reference: "latest_2014.08.11"
+        config: "config/galaxy.ini"
+        reference: "latest_15.07"
+        db:
+          type: "postgresql"
+          hostname: "127.0.0.1"
+          databasename: "galaxy"
+          databaseusername: "galaxy"
+          databasepassword: "galaxy"
+          admin:
+            username: "postgres"
+            password: "galaxy"
