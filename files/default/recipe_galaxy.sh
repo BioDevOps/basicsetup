@@ -9,7 +9,8 @@ git clone https://github.com/myoshimura080822/galaxy_in_docker_custom.git
 cd galaxy_in_docker_custom/
 
 #mkdir /galaxy
-cp ./install_rnaseqENV.R /galaxy/install_rnaseqENV.R
+# ./install_rnaseqENV.R needs before this script RUN (recipe_root.sh as root user)
+#cp ./install_rnaseqENV.R /galaxy/install_rnaseqENV.R
 #chown galaxy:galaxy -R /galaxy
 
 # s7
@@ -78,5 +79,3 @@ wget https://github.com/kingsfordgroup/sailfish/releases/download/v0.6.3/Sailfis
 tar -zxvf Sailfish-0.6.3-Linux_x86-64.tar.gz
 rm Sailfish-0.6.3-Linux_x86-64.tar.gz
 mv /galaxy/Sailfish-0.6.3-Linux_x86-64/lib/libz.so.1 /galaxy/Sailfish-0.6.3-Linux_x86-64/lib/libz.so.1_bk
-
-
