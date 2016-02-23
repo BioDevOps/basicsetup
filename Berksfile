@@ -1,4 +1,4 @@
-source "http://api.berkshelf.com"
+source "https://supermarket.chef.io/"
 cookbook 'selinux', '= 0.8.0'
 cookbook 'apt', '= 2.6.1'
 cookbook 'apache2', '= 3.0.1'
