@@ -1,4 +1,10 @@
 #
+cookbook_file "job_conf.xml" do
+  path "/usr/local/galaxy/galaxy-dist/config/job_conf.xml"
+  mode '0755'
+  action :create_if_missing
+end
+#
 cookbook_file "recipe_galaxy.sh" do
   path "/usr/local/galaxy/recipe_galaxy.sh"
   mode '0755'
