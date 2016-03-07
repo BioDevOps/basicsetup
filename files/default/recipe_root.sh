@@ -41,7 +41,8 @@ add-apt-repository 'deb http://cran.us.r-project.org/bin/linux/ubuntu trusty/'
 apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E084DAB9
 apt-get update
 apt-get install -y --force-yes r-base=3.2.2* r-base-dev=3.2.2* r-recommended=3.2.2*
-apt-get install -y --force-yes libcurl4-openssl-dev libxml2-dev libxt-dev libgtk2.0-dev libcairo2-dev xvfb xauth xfonts-base mesa-common-dev libx11-dev freeglut3-dev openjdk-7-jre-headless
+#apt-get install -y --force-yes libcurl4-openssl-dev libxml2-dev libxt-dev libgtk2.0-dev libcairo2-dev xvfb xauth xfonts-base mesa-common-dev libx11-dev freeglut3-dev openjdk-7-jre-headless
+apt-get install -y --force-yes libcurl4-openssl-dev libxml2-dev libxt-dev libgtk2.0-dev libcairo2-dev xvfb xauth xfonts-base mesa-common-dev libx11-dev freeglut3-dev
 
 # s6
 wget https://raw.githubusercontent.com/myoshimura080822/galaxy_in_docker_custom/master/install_rnaseqENV.R -O /galaxy/install_rnaseqENV.R
