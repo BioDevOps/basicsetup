@@ -2,7 +2,8 @@
 
 # s0
 mkdir /data
-mount -t nfs 192.168.99.1:/ /data
+#mount -t nfs 192.168.99.1:/ /data
+chmod 777 /data
 
 #root@default-ubuntu-1404:~# dd if=/data/test.dd of=/tmp/test.dd bs=100K count=1000
 #1000+0 records in

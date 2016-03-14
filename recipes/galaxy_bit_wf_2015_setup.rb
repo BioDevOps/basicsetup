@@ -42,6 +42,7 @@ end
 script "recipe_root" do
   interpreter "bash"
   code "/usr/local/galaxy/recipe_root.sh &> /usr/local/galaxy/recipe_root.out"
+  timeout 10800
   action :run
   notifies :run, "bash[wait server start]"
 end
