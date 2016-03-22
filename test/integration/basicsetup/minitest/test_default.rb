@@ -7,7 +7,7 @@ describe 'check R version' do
   it "check R version" do
     system('echo "q()" > /tmp/showversion.R')
     system('R CMD BATCH /tmp/showversion.R')
-    assert system('grep "R version 3.2.3" showversion.Rout'), 'R version is not expected version. patched version is updated'
+    assert system('grep "R version 3.2.4" showversion.Rout'), 'R version is not expected version. patched version is updated'
   end
   it "check R library version" do
     system('echo "library()" > /tmp/showlibrary.R')
