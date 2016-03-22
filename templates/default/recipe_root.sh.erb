@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # s0
-mkdir /data
-chmod 777 /data
+mkdir <%= node['basicsetup']['data_for_galaxy_workflow'] || "/data" %>
+chmod 777 <%= node['basicsetup']['data_for_galaxy_workflow'] || "/data" %>
 
 # s1
 mkdir -p /export
@@ -21,9 +21,9 @@ mkdir -p /galaxy-central/config/import_data
 chown galaxy:galaxy /galaxy-central/config/
 chown galaxy:galaxy /galaxy-central/config/import_data
 cd /galaxy-central/config/import_data
-ln -s /data/transcriptome_ref_fasta
-ln -s /data/adapter_primer
-ln -s /data/quartz_div100_rename
+ln -s <%= node['basicsetup']['data_for_galaxy_workflow'] || "/data" %>/transcriptome_ref_fasta
+ln -s <%= node['basicsetup']['data_for_galaxy_workflow'] || "/data" %>/adapter_primer
+ln -s <%= node['basicsetup']['data_for_galaxy_workflow'] || "/data" %>/quartz_div100_rename
 
 # s4
 apt-get update

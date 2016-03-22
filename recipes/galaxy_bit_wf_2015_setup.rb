@@ -16,12 +16,13 @@ cookbook_file "recipe_bit_wf_install.sh" do
   mode '0755'
   action :create_if_missing
 end
-#
-cookbook_file "recipe_root.sh" do
-  path "/usr/local/galaxy/recipe_root.sh"
+
+template "/usr/local/galaxy/recipe_root.sh" do
+  source "recipe_root.sh.erb"
   mode '0755'
   action :create_if_missing
 end
+
 #
 cookbook_file "local-install-repository.sh" do
   path "/usr/local/galaxy/local-install-repository.sh"

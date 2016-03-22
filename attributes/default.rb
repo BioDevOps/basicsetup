@@ -19,3 +19,5 @@
 default[:basicsetup][:sailfish][:index][:create_method] = "executecommand"
 default[:basicsetup][:sailfish][:index][:download][:filename] = "sailfish_index_20150529.tar.gz"
 default[:basicsetup][:sailfish][:index][:download][:url]="http://q-brain2.riken.jp/vm/sailfish_index_20150529.tar.gz"
+# data directory for galaxy workflow
+default[:basicsetup][:data_for_galaxy_workflow]="/data-for-galaxy-workflow"
