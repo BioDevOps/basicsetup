@@ -7,9 +7,9 @@ long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 version          '1.2.0'
 
 depends 'build-essential', '= 2.1.3'
-depends 'java', '= 1.31.0'
+depends 'java', '= 1.39.0'
 depends 'yum-epel', '= 0.6.0'
 depends 'git', '= 4.1.0'
 depends 'sudo', '= 2.7.1'
-depends 'apt', '= 2.6.1'
-depends 'docker', '= 2.5.8'
+depends 'apt', '= 2.7.0'
+depends 'docker', '= 2.7.1'
