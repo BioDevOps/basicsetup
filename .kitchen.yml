@@ -86,7 +86,7 @@ suites:
       #- recipe[basicsetup::Rinstall]
       #- recipe[basicsetup::ubuntu_rnsaseqEnv]
       #- recipe[basicsetup::galaxy_setup]
-      #- recipe[basicsetup::med-bio-install]
+      - recipe[basicsetup::med-bio-install]
       #- recipe[basicsetup::createmachineadminuser]
       - recipe[basicsetup::docker-install]
 
