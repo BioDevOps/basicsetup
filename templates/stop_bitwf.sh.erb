@@ -1,0 +1,6 @@
+#!/bin/bash
+
+RUN=$(docker ps -q --filter name=galaxy_bitwf_1.3.0 | wc -l)
+if [ ${RUN} -eq "1" ]; then
+  docker stop galaxy_bitwf_1.3.0
+fi

@@ -1,0 +1,13 @@
+[Unit]
+Description="Docker container for galaxy"
+After=docker.service
+Requires=docker.service
+
+[Service]
+User=vagrant
+TimeoutStartSec=0
+ExecStart=/usr/local/galaxy-bitwf/scripts/start_bitwf.sh
+ExecStop=/usr/local/galaxy-bitwf/scripts/stop_bitwf.sh
+
+[Install]
+WantedBy=multi-user.target

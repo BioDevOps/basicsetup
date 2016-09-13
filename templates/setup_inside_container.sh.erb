@@ -1,0 +1,42 @@
+#!/bin/bash
+# GE
+apt-get -qq update && apt-get install --no-install-recommends -y gridengine-common gridengine-drmaa1.0
+## setup or path /var/lib/gridengine/default/common/act_qmaster
+#
+# user
+usermod --uid 900 --login vagrant galaxy
+chown -R vagrant /galaxy-central /shed_tools
+usermod -aG postgres vagrant
+usermod -aG ssl-cert vagrant
+sed -i -e '1c\user  vagrant galaxy;' /etc/nginx/nginx.conf
+sed -i -e 's/= galaxy/= vagrant/g' /etc/supervisor/conf.d/galaxy.conf
+sed -i -e 's/= postgres/= vagrant/g' /etc/supervisor/conf.d/galaxy.conf
+chown -R vagrant:postgres /var/run/postgresql
+chown -R vagrant:postgres /var/lib/postgresql
+chown -R vagrant:postgres /var/log/postgresql
+chown -R vagrant:postgres /etc/postgresql
+cp /etc/ssl/private/ssl-cert-snakeoil.key /etc/
+chown root:ssl-cert /etc/ssl-cert-snakeoil.key
+sed -i -e "s/\/ssl\/private//g" /etc/postgresql/9.3/main/postgresql.conf
+mv /var/lib/postgresql/9.3/main /var/lib/postgresql/9.3/mainorg
+ln -s  /var/lib/postgresql/9.3/mainorg /var/lib/postgresql/9.3/main
+sed -i -e "s/postgres:postgres/900:postgres/g" /usr/local/bin/export_user_files.py
+# bit workflow only
+#sed -i -e "s/shutil.copytree( '\/galaxy-central\/config\/', '\/export\/.distribution_config\/' )/shutil.copytree( '\/galaxy-central\/config\/', '\/export\/.distribution_config\/' ,true)/" /usr/local/bin/export_user_files.py
+
+sed -i -e "s/^library_import_dir = config\/import_data$/library_import_dir = \/data/" /galaxy-central/config/galaxy.ini
+
+for FILE in ./tools/tools_of_preanalysis_on_docker_galaxy/GetFastQCRawDataFiles/GetFastQCRawDataFiles.xml ./tools/tools_of_preanalysis_on_docker_galaxy/GetQuantityCountInfo/GetQuantityCountInfo.xml ./tools/tools_of_rnaseq_on_docker_galaxy/GetDatasetDatPath/GetDatasetDatPath.xml ./tools/tools_of_rnaseq_on_docker_galaxy/ConvertAndMergeCountData/ConvertAndMergeCountData.xml ./tools/tools_of_rnaseq_on_docker_galaxy/AddGroupIdForDEGAnalysis/AddGroupIdForDEGAnalysis.xml
+do
+  sed  -i "s@^import sys@import sys\\
+for pp in [ '/usr/lib/python2.7/lib-old', '/usr/lib/python2.7/lib-dynload', '/usr/local/lib/python2.7/dist-packages', '/usr/lib/python2.7/dist-packages', '    /usr/lib/pymodules/python2.7']:\\
+    sys.path.append(pp)@" $FILE
+done
+
+#
+sed -i -e 's/if not container:/if not container or container.resolve_dependencies:/'  ./lib/galaxy/jobs/command_factory.py
+patch -p1 < 2790.diff
+
+#
+rm  config/import_data/*
+/usr/bin/startup
