@@ -2,6 +2,7 @@
 basic machine setup cookbook
 
 # Prerequisite for vagrant
+
 ```
 vagrant plugin install vagrant-chef-zero
 vagrant plugin install vagrant-omnibus
@@ -15,17 +16,18 @@ vagrant version is
 
 ```
 $ vagrant -v
-Vagrant 1.6.5
+Vagrant 1.8.5
 ```
 
 vagrant plugins version are
 
 ```
-vagrant-chef-zero (1.0.1)
+vagrant-chef-zero (2.0.0)
 vagrant-omnibus (1.4.1)
 ```
 
 # Setup using vagrant
+
 ```
 berks vendor cookbooks
 vagrant up
@@ -63,11 +65,36 @@ I write these assignment to Vagrantfile.
 If you have enough resource, you can choose the method of create sailfish index
  via sailfish command.
 
+
+# FAQ
+
+## Sometimes job is fail.
+
+Answer. Maybe machine resource is not enought to execute.
+
+Almost case is that RAM is not enough.
+
+HISAT2 require some times 32GB.
+
+or
+
+You try to run some jobs parallel.
+
+
+## Recreate
+
+```
+vagrant halt
+VBoxManage sharedfolder remove bayesvm_1.3.0  --name vagrant
+VBoxManage export bayesvm_1.3.0 -o bayesvm_1.3.0-dev.ova
+```
+
+
 ## TODO
 
 see [TODO](TODO.md)
 
 # License
 
-Copyright (c) [2015] [Manabu ISHII] and RIKEN Bioinformatics Research Unit
+Copyright (c) [2015-2016] [Manabu ISHII] and RIKEN Bioinformatics Research Unit
 Released under the [Apache License Version 2.0]
