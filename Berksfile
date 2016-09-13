@@ -7,6 +7,6 @@ cookbook 'galaxy', github: "BioDevOps/galaxy-cookbook"
 cookbook 'galaxy-httpproxy', github: "manabuishii/galaxy-httpproxy-cookbook"
 cookbook 'ubuntu-change-source-list', github: "ywjno/ubuntu-change-source-list"
 cookbook 'timezone-ii', github: "L2G/timezone-ii"
-cookbook 'docker', '= 2.7.1'
+cookbook 'docker', '= 2.9.5'
 cookbook 'java', '= 1.39.0'
 metadata

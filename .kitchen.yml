@@ -13,8 +13,11 @@ provisioner:
 platforms:
   - name: ubuntu-16.04
     driver:
-      #box: bento/ubuntu-16.04
+      box: ubuntu1604_80G
+      box_url: https://q-brain2.riken.jp/vm/ubuntu1604_80G.box
       vagrantfile_erb: Vagrantfile.erb
+      customize:
+        nictype1: virtio
     run_list:
       #- recipe[timezone-ii]
       #- recipe[ubuntu-change-source-list]
@@ -61,31 +64,12 @@ platforms:
 suites:
   - name: basicsetup
     run_list:
-      - recipe[basicsetup::change-apt]
+      #- recipe[basicsetup::change-apt]
       - recipe[ubuntu-change-source-list]
       - recipe[apt]
       - recipe[java]
       - recipe[basicsetup]
-      #- recipe[selinux::permissive]
       - recipe[timezone-ii]
-      ##- recipe[build-essential]
-      #- recipe[postgresql::server]
-      #- recipe[postgresql::client]
-      #- recipe[apache2]
-      #- recipe[apache2::mod_authz_host]
-      #- recipe[apache2::mod_access_compat]
-      #- recipe[apache2::mod_proxy]
-      #- recipe[apache2::mod_proxy_http]
-
-      #- recipe[galaxy@1.1.0]
-      #- recipe[galaxy-httpproxy@0.3.1]
-      #- recipe[basicsetup::galaxy_bit_wf_2015_setup]
-      #- recipe[basicsetup::galaxy_setup_local_env_sh]
-
-      #- recipe[basicsetup::setup_galaxy_directory]
-      #- recipe[basicsetup::Rinstall]
-      #- recipe[basicsetup::ubuntu_rnsaseqEnv]
-      #- recipe[basicsetup::galaxy_setup]
       - recipe[basicsetup::med-bio-install]
       #- recipe[basicsetup::createmachineadminuser]
       - recipe[basicsetup::docker-install]
