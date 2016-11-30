@@ -2,7 +2,7 @@
 cd /usr/local/galaxy-bitwf/scripts
 /usr/bin/docker run --rm \
  -v $PWD/job_conf.xml.local:/etc/galaxy/job_conf.xml \
- -p 29002:9002 -p 20080:80 \
+ -p 9002:9002 -p 80:80 \
  -e SGE_ROOT=/var/lib/gridengine \
  -e "NONUSE=nodejs,reports,proftp,slurmctld,slurmd,condor" \
  -e GALAXY_UID=900 \
