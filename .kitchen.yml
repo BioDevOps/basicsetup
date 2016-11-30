@@ -73,12 +73,17 @@ suites:
       - recipe[basicsetup::med-bio-install]
       #- recipe[basicsetup::createmachineadminuser]
       - recipe[basicsetup::docker-install]
+      - recipe[anaconda::default]
+      - recipe[anaconda::shell_conveniences]
 
     attributes:
       tz: "Asia/Tokyo"
       #java:
       #  install_flavor: "openjdk"
       #  jdk_version: 7
+      anaconda:
+        flavor: 'x86_64'
+        accept_license: 'yes'
       apt:
         compile_time_update: true
       build-essential:

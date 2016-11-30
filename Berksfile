@@ -9,4 +9,5 @@ cookbook 'ubuntu-change-source-list', github: "ywjno/ubuntu-change-source-list"
 cookbook 'timezone-ii', github: "L2G/timezone-ii"
 cookbook 'docker', '= 2.9.5'
 cookbook 'java', '= 1.39.0'
+cookbook 'anaconda', '= 0.6.2'
 metadata

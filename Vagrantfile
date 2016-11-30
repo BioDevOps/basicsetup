@@ -3,7 +3,7 @@
 
 Vagrant.configure(2) do |config|
   config.vm.provider "virtualbox" do |v|
-    v.name = "bayesvm_1.3.0-dev-20161003"
+    v.name = "bayesvm_1.3.0-dev-20161130"
     v.customize ["modifyvm", :id, "--memory", "8192", "--cpus", "4"]
   end
   config.ssh.insert_key = false
