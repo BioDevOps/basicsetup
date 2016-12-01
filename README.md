@@ -88,7 +88,33 @@ vagrant halt
 VBoxManage sharedfolder remove bayesvm_1.3.0  --name vagrant
 VBoxManage export bayesvm_1.3.0 -o bayesvm_1.3.0-dev.ova
 ```
+## bioconda
 
+### First time
+
+Create conda environment and install `bwa`
+
+```
+conda create -n myenvironment bwa=0.7.12
+source activate myenvironment
+bwa
+```
+
+### Remove tool
+
+```
+conda remove -n myenvironment bwa
+```
+
+### Remove conda environment
+
+```
+conda env remove -n myenvironment
+```
+
+### Anaconad Documentation
+
+* [Anaconda Distribution | Continuum Analytics: Documentation](https://docs.continuum.io/anaconda/)
 
 ## TODO
 

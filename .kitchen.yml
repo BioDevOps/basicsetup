@@ -79,6 +79,7 @@ suites:
       - recipe[basicsetup::docker-install]
       - recipe[anaconda::default]
       - recipe[anaconda::shell_conveniences]
+      - recipe[basicsetup::bioconda_install]
 
     attributes:
       tz: "Asia/Tokyo"
