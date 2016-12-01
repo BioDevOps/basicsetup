@@ -6,6 +6,8 @@ General
 =======
 - [x] Create cookbook to install workflow.
 - [ ] Write test
+ - [ ] Galaxy start
+ - [x] Bioconda
 
 for Creating Virtual Machin(OVA) and vagrant
 ============================================
