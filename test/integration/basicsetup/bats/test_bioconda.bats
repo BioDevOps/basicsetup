@@ -7,15 +7,15 @@
 }
 
 
-@test "bwa is install for login user" {
-  # bwa is not install current environment
-  run sudo -u vagrant bash -l -c 'which bwa'
+@test "sailfish is install for login user" {
+  # sailfish is not install current environment
+  run sudo -u vagrant bash -l -c 'which sailfish'
   [ "$status" -ne 0 ]
   # remove old environment mainly for run test several times like debug phase
   sudo -u vagrant bash -l -c 'conda env remove -y -n mytestkitchenenvironment'
-  # create and new conda environment and install bwa
-  sudo -u vagrant bash -l -c 'conda create -y -n mytestkitchenenvironment bwa=0.7.12'
-  # test bwa is exists
-  run sudo -u vagrant bash -l -c 'source activate mytestkitchenenvironment ; which bwa'
+  # create and new conda environment and install sailfish
+  sudo -u vagrant bash -l -c 'conda create -y -n mytestkitchenenvironment sailfish'
+  # test sailfish is exists
+  run sudo -u vagrant bash -l -c 'source activate mytestkitchenenvironment ; which sailfish'
   [ "$status" -eq 0 ]
 }
