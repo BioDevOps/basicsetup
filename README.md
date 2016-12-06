@@ -30,7 +30,7 @@ vagrant-omnibus (1.4.1)
 
 ```
 berks vendor cookbooks
-vagrant up
+vagrant up --provision
 ```
 
 ## If you have some error message.
