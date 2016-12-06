@@ -100,6 +100,19 @@ source activate myenvironment
 bwa
 ```
 
+### list conda envrionment
+
+```
+conda info -e
+```
+
+## list conda channels
+
+```
+conda config --get channels
+conda config --get channels --system
+```
+
 ### Remove tool
 
 ```
