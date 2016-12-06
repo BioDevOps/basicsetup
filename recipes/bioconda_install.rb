@@ -9,21 +9,21 @@
 # https://bioconda.github.io/
 #
 bash "install-conda-conda-forge" do
-  code   "source /etc/profile.d/anaconda-env.sh; conda config --add channels conda-forge"
+  code   "source /etc/profile.d/anaconda-env.sh; conda config --add channels conda-forge --system"
   action :run
   notifies :run, "bash[install-conda-defaults]"
 end
 bash "install-conda-defaults" do
-  code   "source /etc/profile.d/anaconda-env.sh; conda config --add channels defaults"
+  code   "source /etc/profile.d/anaconda-env.sh; conda config --add channels defaults --system"
   action :nothing
   notifies :run, "bash[install-conda-r]"
 end
 bash "install-conda-r" do
-  code   "source /etc/profile.d/anaconda-env.sh; conda config --add channels r"
+  code   "source /etc/profile.d/anaconda-env.sh; conda config --add channels r --system"
   action :nothing
   notifies :run, "bash[install-conda-bioconda]"
 end
 bash "install-conda-bioconda" do
-  code   "source /etc/profile.d/anaconda-env.sh; conda config --add channels bioconda"
+  code   "source /etc/profile.d/anaconda-env.sh; conda config --add channels bioconda --system"
   action :nothing
 end
