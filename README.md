@@ -149,12 +149,15 @@ Run Galaxy following directory
 |In host|In docker container|File or Directory|Note|
 |:---|:---|:---:|:---|
 |/usr/local/galaxy-bitwf/scripts|/usr/local/galaxy-bitwf/scripts|directory|for share|
+|/usr/local/galaxy-bitwf/scripts/2790.diff|/galaxy-central/2790.diff|file|Galaxy pull 2790 diff|
 |/usr/local/galaxy-bitwf/scripts/job_conf.xml|/etc/galaxy/job_conf.xml|file|Job setting|
 |/usr/local/galaxy-bitwf/export|/export|directory|for share|
 |/usr/local/galaxy-bitwf/data|/data|directory|for share Readonly|
 |/usr/local/galaxy-bitwf/scripts/setup_inside_container.sh|/galaxy-central/setup_inside_container.sh|file|Startup script|
 
-Detail [templates/start_bitwf.sh.erb](./templates/start_bitwf.sh.erb)
+* Detail [templates/start_bitwf.sh.erb](./templates/start_bitwf.sh.erb)
+
+* [More configurability for containerized jobs by jmchilton · Pull Request #2790 · galaxyproject/galaxy](https://github.com/galaxyproject/galaxy/pull/2790)
 
 ## bioconda
 
