@@ -88,6 +88,74 @@ vagrant halt
 VBoxManage sharedfolder remove bayesvm_1.3.0  --name vagrant
 VBoxManage export bayesvm_1.3.0 -o bayesvm_1.3.0-dev.ova
 ```
+
+## Galaxy
+
+### How does Galaxy runs ?
+
+* Galaxy run in docker
+* Galaxy run with systemctl
+* Galaxy starts on boot by default setting
+* Galaxy using port 20080, 29002
+
+### I can't access .
+
+Galaxy opens 20080.
+
+http://localhost:20080
+or
+http://yourbayeslinuxhost:20080
+
+#### Why Galaxy default port is 20080 ?
+
+To avoid conflict with other application.
+
+Port 80 is using by httpd server (Apache httpd , Nginx is famous )
+
+### Start Galaxy
+
+### Stop Galaxy
+
+### Where is setting files.
+
+* service
+
+```
+/lib/systemd/system/docker-galaxy.service
+```
+
+* Start script
+
+```
+/usr/local/galaxy-bitwf/scripts/start_bitwf.sh
+```
+
+* Stop script
+
+```
+/usr/local/galaxy-bitwf/scripts/stop_bitwf.sh
+```
+
+### Other directories and files structure.
+
+Run Galaxy following directory
+
+```
+/usr/local/galaxy-bitwf/scripts
+```
+
+#### -v files
+
+|In host|In docker container|File or Directory|Note|
+|:---|:---|:---:|:---|
+|/usr/local/galaxy-bitwf/scripts|/usr/local/galaxy-bitwf/scripts|directory|for share|
+|/usr/local/galaxy-bitwf/scripts/job_conf.xml|/etc/galaxy/job_conf.xml|file|Job setting|
+|/usr/local/galaxy-bitwf/export|/export|directory|for share|
+|/usr/local/galaxy-bitwf/data|/data|directory|for share Readonly|
+|/usr/local/galaxy-bitwf/scripts/setup_inside_container.sh|/galaxy-central/setup_inside_container.sh|file|Startup script|
+
+Detail [templates/start_bitwf.sh.erb](./templates/start_bitwf.sh.erb)
+
 ## bioconda
 
 ### First time
