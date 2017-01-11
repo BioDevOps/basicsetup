@@ -35,7 +35,7 @@ done
 
 #
 sed -i -e 's/if not container:/if not container or container.resolve_dependencies:/'  ./lib/galaxy/jobs/command_factory.py
-patch -p1 < 2790.diff
+patch -N -p1 < 2790.diff
 
 #
 rm  config/import_data/*
