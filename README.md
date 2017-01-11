@@ -159,6 +159,8 @@ Run Galaxy following directory
 
 * [More configurability for containerized jobs by jmchilton · Pull Request #2790 · galaxyproject/galaxy](https://github.com/galaxyproject/galaxy/pull/2790)
 
+* [2790.diff](https://patch-diff.githubusercontent.com/raw/galaxyproject/galaxy/pull/2790.diff)
+
 ## bioconda
 
 ### First time
