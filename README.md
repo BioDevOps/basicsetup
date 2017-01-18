@@ -96,17 +96,17 @@ VBoxManage export bayesvm_1.3.0 -o bayesvm_1.3.0-dev.ova
 * Galaxy run in docker
 * Galaxy run with systemctl
 * Galaxy starts on boot by default setting
-* Galaxy using port 20080, 29002
+* Galaxy using port 28080, 29002
 
 ### I can't access .
 
-Galaxy opens 20080.
+Galaxy opens 28080.
 
-http://localhost:20080
+http://localhost:28080
 or
-http://yourbayeslinuxhost:20080
+http://yourbayeslinuxhost:28080
 
-#### Why Galaxy default port is 20080 ?
+#### Why Galaxy default port is 28080 ?
 
 To avoid conflict with other application.
 
