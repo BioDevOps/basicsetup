@@ -1,5 +1,5 @@
 #!/bin/bash
-if [ ! -e '/export/.setup_inside_container.run' ]; then
+if [ ! -e '/.setup_inside_container.run' ]; then
   # GE
   apt-get -qq update && apt-get install --no-install-recommends -y gridengine-common gridengine-drmaa1.0
   ## setup or path /var/lib/gridengine/default/common/act_qmaster
@@ -22,8 +22,9 @@ if [ ! -e '/export/.setup_inside_container.run' ]; then
   mv /var/lib/postgresql/9.3/main /var/lib/postgresql/9.3/mainorg
   ln -s  /var/lib/postgresql/9.3/mainorg /var/lib/postgresql/9.3/main
   sed -i -e "s/postgres:postgres/1000:postgres/g" /usr/local/bin/export_user_files.py
-  # bit workflow only
-  #sed -i -e "s/shutil.copytree( '\/galaxy-central\/config\/', '\/export\/.distribution_config\/' )/shutil.copytree( '\/galaxy-central\/config\/', '\/export\/.distribution_config\/' ,true)/" /usr/local/bin/export_user_files.py
+  ## comment out 46,48 is same effect
+  ## bit workflow only
+  ##sed -i -e "s/shutil.copytree( '\/galaxy-central\/config\/', '\/export\/.distribution_config\/' )/shutil.copytree( '\/galaxy-central\/config\/', '\/export\/.distribution_config\/' ,true)/" /usr/local/bin/export_user_files.py
 
   sed -i -e "s/^library_import_dir = config\/import_data$/library_import_dir = \/data/" /galaxy-central/config/galaxy.ini
 
@@ -49,7 +50,7 @@ if [ ! -e '/export/.setup_inside_container.run' ]; then
   sed -i -e  '$ a\    file = open("/.galaxy_save", "w")\n    file.close()\n    os.chown( "/.galaxy_save", int(os.environ["GALAXY_UID"]), int(os.environ["GALAXY_GID"]) )' /usr/local/bin/export_user_files.py
 
   #
-  touch /export/.setup_inside_container.run
+  touch /.setup_inside_container.run
 fi
 
 /usr/bin/startup
