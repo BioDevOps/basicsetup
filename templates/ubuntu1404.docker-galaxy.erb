@@ -1,0 +1,12 @@
+#! /bin/sh
+
+case "$1" in
+  start)
+    /usr/local/galaxy-bitwf/scripts/start_bitwf.sh &> /dev/null
+    ;;
+  stop)
+    /usr/local/galaxy-bitwf/scripts/stop_bitwf.sh
+    ;;
+esac
+
+exit 0

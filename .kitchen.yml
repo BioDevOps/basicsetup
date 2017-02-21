@@ -50,7 +50,7 @@ platforms:
     attributes:
       java:
         install_flavor: "openjdk"
-        jdk_version: 7
+        jdk_version: 8
       apt:
         compile_time_update: true
       build-essential:
@@ -62,7 +62,8 @@ platforms:
         need_update: true
       basicsetup:
         docker:
-          version: '1.10.3'
+          #version: '1.10.3'
+          version: '1.12.3'
           distribution: "ubuntu-trusty"
 
 suites:

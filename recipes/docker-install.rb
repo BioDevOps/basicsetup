@@ -33,28 +33,6 @@ end
 docker_image 'myoshimura080822/galaxy_in_docker_bitwf' do
   tag '160607'
   action :nothing
-  notifies :create_if_missing, "template[/lib/systemd/system/docker-galaxy.service]"
-end
-
-template '/lib/systemd/system/docker-galaxy.service' do
-  source 'docker-galaxy.service.erb'
-  owner 'root'
-  group 'root'
-  mode '0755'
-  action :nothing
-  notifies :run, "bash[enable-docker-galaxy]"
-end
-
-# enable docker-galaxy service
-bash "enable-docker-galaxy" do
-  code   "sudo systemctl enable docker-galaxy"
-  action :nothing
-  notifies :run, "bash[start-docker-galaxy]"
-end
-# start docker-galaxy service
-bash "start-docker-galaxy" do
-  code   "sudo systemctl start docker-galaxy"
-  action :nothing
 end
 
 # create directory for galaxy bit workflow
@@ -115,4 +93,25 @@ template '/usr/local/galaxy-bitwf/scripts/2790.diff' do
   group 'vagrant'
   mode '0644'
   action :nothing
+end
+package "expect"
+cookbook_file "/usr/local/galaxy-bitwf/scripts/wait_docker_server_started.sh" do
+  source "wait_docker_server_started.sh"
+  owner 'vagrant'
+  group 'vagrant'
+  #owner node[:galaxy][:user]
+  #group node[:galaxy][:group]
+  mode "0755"
+  action :create_if_missing
+end
+
+# include
+if node[:platform] == "ubuntu"
+  if node[:platform_version] >= "14.04" and node[:platform_version] < "16.04"
+    package "sysv-rc-conf"
+    include_recipe "basicsetup::ubuntu1404"
+  end
+  if node[:platform_version] >= "16.04"
+    include_recipe "basicsetup::ubuntu1604"
+  end
 end
