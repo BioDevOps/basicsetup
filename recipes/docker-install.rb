@@ -18,7 +18,7 @@ docker_installation_package 'default' do
   version node[:basicsetup][:docker][:version]
   #action :create
   action :nothing
-  #package_options %q|--force-yes -o Dpkg::Options::='--force-confold' -o Dpkg::Options::='--force-all'| # if Ubuntu for example
+  package_options %q|--force-yes -o Dpkg::Options::='--force-confold' -o Dpkg::Options::='--force-all'| # if Ubuntu for example
   notifies :modify, "group[docker]"
 end
 
