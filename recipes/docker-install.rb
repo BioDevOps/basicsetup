@@ -48,7 +48,7 @@ mkdir -p data/Homo_sapiens_genome
 mkdir -p data/Mus_musculus_genome
 mkdir -p export/postgresql/
 chmod 777 -R export
-chown -R vagrant:vagrant /usr/local/galaxy-bitwf
+chown -R #{node[:basicsetup][:galaxy][:user]}:#{node[:basicsetup][:galaxy][:group]} /usr/local/galaxy-bitwf
   EOH
   action :run
   not_if { ::File.exists?("/usr/local/galaxy-bitwf") }
@@ -57,48 +57,48 @@ end
 
 template '/usr/local/galaxy-bitwf/scripts/setup_inside_container.sh' do
   source 'setup_inside_container.sh.erb'
-  owner 'vagrant'
-  group 'vagrant'
+  owner node[:basicsetup][:galaxy][:user]
+  group node[:basicsetup][:galaxy][:group]
   mode '0755'
   action :nothing
   notifies :create_if_missing, "template[/usr/local/galaxy-bitwf/scripts/start_bitwf.sh]"
 end
 template '/usr/local/galaxy-bitwf/scripts/start_bitwf.sh' do
   source 'start_bitwf.sh.erb'
-  owner 'vagrant'
-  group 'vagrant'
+  owner node[:basicsetup][:galaxy][:user]
+  group node[:basicsetup][:galaxy][:group]
   mode '0755'
   action :nothing
   notifies :create_if_missing, "template[/usr/local/galaxy-bitwf/scripts/stop_bitwf.sh]"
 end
 template '/usr/local/galaxy-bitwf/scripts/stop_bitwf.sh' do
   source 'stop_bitwf.sh.erb'
-  owner 'vagrant'
-  group 'vagrant'
+  owner node[:basicsetup][:galaxy][:user]
+  group node[:basicsetup][:galaxy][:group]
   mode '0755'
   action :nothing
   notifies :create_if_missing, "template[/usr/local/galaxy-bitwf/scripts/job_conf.xml.local]"
 end
 template '/usr/local/galaxy-bitwf/scripts/job_conf.xml.local' do
   source 'job_conf.xml.local.erb'
-  owner 'vagrant'
-  group 'vagrant'
+  owner node[:basicsetup][:galaxy][:user]
+  group node[:basicsetup][:galaxy][:group]
   mode '0644'
   action :nothing
   notifies :create_if_missing, "template[/usr/local/galaxy-bitwf/scripts/2790.diff]"
 end
 template '/usr/local/galaxy-bitwf/scripts/2790.diff' do
   source '2790.diff.erb'
-  owner 'vagrant'
-  group 'vagrant'
+  owner node[:basicsetup][:galaxy][:user]
+  group node[:basicsetup][:galaxy][:group]
   mode '0644'
   action :nothing
 end
 package "expect"
 cookbook_file "/usr/local/galaxy-bitwf/scripts/wait_docker_server_started.sh" do
   source "wait_docker_server_started.sh"
-  owner 'vagrant'
-  group 'vagrant'
+  owner node[:basicsetup][:galaxy][:user]
+  group node[:basicsetup][:galaxy][:group]
   #owner node[:galaxy][:user]
   #group node[:galaxy][:group]
   mode "0755"
