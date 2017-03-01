@@ -62,6 +62,7 @@ template '/usr/local/galaxy-bitwf/scripts/setup_inside_container.sh' do
   mode '0755'
   action :nothing
   notifies :create_if_missing, "template[/usr/local/galaxy-bitwf/scripts/start_bitwf.sh]"
+  variables({single_user: node[:basicsetup][:galaxy][:user]})
 end
 template '/usr/local/galaxy-bitwf/scripts/start_bitwf.sh' do
   source 'start_bitwf.sh.erb'

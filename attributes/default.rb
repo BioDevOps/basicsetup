@@ -26,4 +26,6 @@ default[:basicsetup][:docker][:version]='1.11.1'
 default[:basicsetup][:docker][:setup_group]=true
 default[:basicsetup][:docker][:members]='vagrant'
 
-
+# galaxy related
+default[:basicsetup][:galaxy][:user]='vagrant'
+default[:basicsetup][:galaxy][:group]='vagrant'
