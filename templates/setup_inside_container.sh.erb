@@ -32,8 +32,8 @@ if [ ! -e '/.setup_inside_container.run' ]; then
   for FILE in ./tools/tools_of_preanalysis_on_docker_galaxy/GetFastQCRawDataFiles/GetFastQCRawDataFiles.xml ./tools/tools_of_preanalysis_on_docker_galaxy/GetQuantityCountInfo/GetQuantityCountInfo.xml ./tools/tools_of_rnaseq_on_docker_galaxy/GetDatasetDatPath/GetDatasetDatPath.xml ./tools/tools_of_rnaseq_on_docker_galaxy/ConvertAndMergeCountData/ConvertAndMergeCountData.xml ./tools/tools_of_rnaseq_on_docker_galaxy/AddGroupIdForDEGAnalysis/AddGroupIdForDEGAnalysis.xml
   do
     sed  -i "s@^import sys@import sys\\
-  for pp in [ '/usr/lib/python2.7/lib-old', '/usr/lib/python2.7/lib-dynload', '/usr/local/lib/python2.7/dist-packages', '/usr/lib/python2.7/dist-packages', '    /usr/lib/pymodules/python2.7']:\\
-      sys.path.append(pp)@" $FILE
+for pp in [ '/usr/lib/python2.7/lib-old', '/usr/lib/python2.7/lib-dynload', '/usr/local/lib/python2.7/dist-packages', '/usr/lib/python2.7/dist-packages', '    /usr/lib/pymodules/python2.7']:\\
+    sys.path.append(pp)@" $FILE
   done
 
   #
