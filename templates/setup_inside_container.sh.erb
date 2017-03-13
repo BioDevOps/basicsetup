@@ -35,6 +35,8 @@ if [ ! -e '/.setup_inside_container.run' ]; then
 for pp in [ '/usr/lib/python2.7/lib-old', '/usr/lib/python2.7/lib-dynload', '/usr/local/lib/python2.7/dist-packages', '/usr/lib/python2.7/dist-packages', '    /usr/lib/pymodules/python2.7']:\\
     sys.path.append(pp)@" $FILE
   done
+  # for sailfish 0.9
+  sed -i -e 's/>sailfish -version</>\/galaxy\/sailfish-0.9.2_trusty\/bin\/sailfish -version</g' /galaxy-central/tools/tools_of_rnaseq_on_docker_galaxy/Sailfish_0.9_Wrapper/Sailfish_0.9_Wrapper.xml
 
   #
   sed -i -e 's/if not container:/if not container or container.resolve_dependencies:/'  ./lib/galaxy/jobs/command_factory.py
