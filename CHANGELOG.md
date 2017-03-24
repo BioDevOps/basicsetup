@@ -6,7 +6,11 @@ This file is used to list changes made in each version of the basicsetup cookboo
 1.3.0
 -----
 - bioconda support
-- galaxy move to docker container
+ - conda 3.14.1
+- docker install 1.12.3
+- Galaxy run as docker container
+ - Add 4 Genome RNA-seq Workflow (HISAT2, Tophat2)
+ - Add 2 Sailfish v0.9 Workflow
 
 0.1.0
 -----
