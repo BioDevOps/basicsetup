@@ -114,7 +114,19 @@ Port 80 is using by httpd server (Apache httpd , Nginx is famous )
 
 ### Start Galaxy
 
+#### 14.04
+
+```
+sudo /etc/init.d/docker-galaxy start
+```
+
 ### Stop Galaxy
+
+#### 14.04
+
+```
+sudo /etc/init.d/docker-galaxy stop
+```
 
 ### Where is setting files.
 
