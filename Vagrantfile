@@ -3,7 +3,7 @@
 
 Vagrant.configure(2) do |config|
   config.vm.provider "virtualbox" do |v|
-    v.name = "bayesvm_1.3.0-dev-20161130"
+    v.name = "bayesvm_1.3.0-20170324"
     v.customize ["modifyvm", :id, "--memory", "8192", "--cpus", "4"]
   end
   config.ssh.insert_key = false
@@ -11,8 +11,8 @@ Vagrant.configure(2) do |config|
   #config.omnibus.chef_version=:latest
   config.omnibus.chef_version="12.7.2"
   config.chef_zero.chef_repo_path = "."
-  config.vm.box = "ubuntu1604_80G"
-  config.vm.box_url = "https://q-brain2.riken.jp/vm/ubuntu1604_80G.box"
+  config.vm.box = "box80g"
+  config.vm.box_url = "https://q-brain2.riken.jp/vm/box80g.box"
   config.vm.provision :chef_client do |chef|
     chef.custom_config_path = "chef_custom_config"
     chef.run_list = [
@@ -23,19 +23,23 @@ Vagrant.configure(2) do |config|
 "timezone-ii",
 "basicsetup",
 "basicsetup::med-bio-install",
-"basicsetup::docker-install"
-
-
+"basicsetup::docker-install",
+"anaconda::default",
+"anaconda::shell_conveniences",
+"basicsetup::bioconda_install"
     ]
     chef.json = {
+      :anaconda => {
+        :flavor => 'x86_64',
+        :accept_license => 'yes'
+      },
       :apt => {
         :compile_time_update => true
       },
       :basicsetup => {
-        :sailfish => {
-          :index => {
-            :create_method => "download"
-          }
+        :docker => {
+          :version => '1.12.3',
+          :distribution => 'ubuntu-trusty'
         }
       },
       :"build-essential" => {
@@ -48,7 +52,7 @@ Vagrant.configure(2) do |config|
       },
       :ubuntu => {
         :mirror_site_url => "http://ftp.jaist.ac.jp/pub/Linux/ubuntu/",
-        :version => "16.04",
+        :version => "14.04",
         :need_deb_src => false,
         :need_update => true
       }
