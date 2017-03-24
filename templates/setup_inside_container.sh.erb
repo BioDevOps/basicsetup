@@ -6,7 +6,7 @@ if [ ! -e '/.setup_inside_container.run' ]; then
   ## setup or path /var/lib/gridengine/default/common/act_qmaster
   #
   # user
-  usermod --uid 1000 --login ${SINGLEUSER} galaxy
+  usermod --uid ${GALAXY_UID} --login ${SINGLEUSER} galaxy
   chown -R ${SINGLEUSER} /galaxy-central /shed_tools
   usermod -aG postgres ${SINGLEUSER}
   usermod -aG ssl-cert ${SINGLEUSER}
@@ -22,7 +22,7 @@ if [ ! -e '/.setup_inside_container.run' ]; then
   sed -i -e "s/\/ssl\/private//g" /etc/postgresql/9.3/main/postgresql.conf
   mv /var/lib/postgresql/9.3/main /var/lib/postgresql/9.3/mainorg
   ln -s  /var/lib/postgresql/9.3/mainorg /var/lib/postgresql/9.3/main
-  sed -i -e "s/postgres:postgres/1000:postgres/g" /usr/local/bin/export_user_files.py
+  sed -i -e "s/postgres:postgres/${SINGLEUSER}:postgres/g" /usr/local/bin/export_user_files.py
   ## comment out 46,48 is same effect
   ## bit workflow only
   ##sed -i -e "s/shutil.copytree( '\/galaxy-central\/config\/', '\/export\/.distribution_config\/' )/shutil.copytree( '\/galaxy-central\/config\/', '\/export\/.distribution_config\/' ,true)/" /usr/local/bin/export_user_files.py

@@ -71,6 +71,7 @@ template '/usr/local/galaxy-bitwf/scripts/start_bitwf.sh' do
   mode '0755'
   action :nothing
   notifies :create_if_missing, "template[/usr/local/galaxy-bitwf/scripts/stop_bitwf.sh]"
+  variables({single_user: node[:basicsetup][:galaxy][:user]})
 end
 template '/usr/local/galaxy-bitwf/scripts/stop_bitwf.sh' do
   source 'stop_bitwf.sh.erb'

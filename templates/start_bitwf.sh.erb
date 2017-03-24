@@ -4,7 +4,7 @@ RET=$?
 if [ ${RET} -eq 0 ]; then
   docker start galaxy_bitwf_1.3.0
 else
-  GALAXY_USER_UID=1000
+  GALAXY_USER_UID=$(id -u <%= @single_user %>)
   cd /usr/local/galaxy-bitwf/scripts
   /usr/bin/docker run -d \
    -v $PWD/job_conf.xml.local:/etc/galaxy/job_conf.xml \
