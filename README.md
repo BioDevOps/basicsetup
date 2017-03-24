@@ -185,7 +185,7 @@ NFS needs to mount before docker galaxy start.
 This case `/data` is on NFS
 
 ```
-docker exec galaxy_bitwf_1.3.9 ls /data
+docker exec galaxy_bitwf_1.3.0 ls /data
 ```
 
 If there is no data , it fail to start.
