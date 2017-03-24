@@ -45,7 +45,7 @@ I'll hope to fix it and robust to finish the cookbooks.
 
 ### I want to change recipe
 
-
+apt-get -q -y --force-yes -o Dpkg::Options::='--force-confold' -o Dpkg::Options::='--force-all' install docker-engine=1.12.3-0~trusty
 
 
 ### How long does it take to setup using vagrant
@@ -161,6 +161,38 @@ Run Galaxy following directory
 
 * [2790.diff](https://patch-diff.githubusercontent.com/raw/galaxyproject/galaxy/pull/2790.diff)
 
+### NFS and docker
+
+If you using NFS for data persistent,
+ you need to care about order of NFS mount and docker galaxy start.
+
+NFS needs to mount before docker galaxy start.
+
+#### To check mount is success
+
+This case `/data` is on NFS
+
+```
+docker exec galaxy_bitwf_1.3.9 ls /data
+```
+
+If there is no data , it fail to start.
+To resolve problem
+
+```
+sudo /etc/init.d/docker-galaxy stop
+docker rm galaxy_bitwf_1.3.0
+sudo /etc/init.d/docker-galaxy start
+```
+
+#### Not start docker-galaxy at boot time
+
+If you want to start docker-galaxy , you need to disable automatic start on boot.
+
+```
+sysv-rc-conf docker-galaxy off
+```
+
 ## bioconda
 
 ### First time
@@ -198,7 +230,7 @@ conda remove -n myenvironment bwa
 conda env remove -n myenvironment
 ```
 
-### Anaconad Documentation
+### Anaconda Documentation
 
 * [Anaconda Distribution | Continuum Analytics: Documentation](https://docs.continuum.io/anaconda/)
 
