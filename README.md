@@ -240,5 +240,5 @@ see [TODO](TODO.md)
 
 # License
 
-Copyright (c) [2015-2016] [Manabu ISHII] and RIKEN Bioinformatics Research Unit
+Copyright (c) [2015-2017] [Manabu ISHII] and RIKEN Bioinformatics Research Unit
 Released under the [Apache License Version 2.0]
