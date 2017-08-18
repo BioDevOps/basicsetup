@@ -100,7 +100,7 @@ VBoxManage export bayesvm_1.3.0 -o bayesvm_1.3.0-dev.ova
 
 ### I can't access .
 
-Galaxy opens 28080.
+Galaxy is available port 28080.
 
 http://localhost:28080
 or
@@ -108,7 +108,8 @@ http://yourbayeslinuxhost:28080
 
 #### How to change Galaxy port 28080 to 80
 
-1. Check 80 is used or not.
+1. Check port 80 is used or not.
+1. If port 80 is used, stop the service.
 1. Change port 28080 to 80 by editing `/usr/local/galaxy-bitwf/scripts/start_bitwf.sh`. `-p 28080:80` to `-p 80:80`
 
 #### Why Galaxy default port is 28080 ?
