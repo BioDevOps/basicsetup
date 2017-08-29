@@ -10,6 +10,8 @@ This file is used to list changes made in each version of the basicsetup cookboo
 
 This version is executed `dist-upgrade` and `do-release-upgrade` on 1.3.0 .
 
+[Upgrade Instruction here](bayesvm_1.3.0_to_1.4.0.txt)
+
 1.3.0
 -----
 - bioconda support
