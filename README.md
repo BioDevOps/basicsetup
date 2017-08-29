@@ -252,6 +252,19 @@ conda env remove -n myenvironment
 
 * [Anaconda Distribution | Continuum Analytics: Documentation](https://docs.continuum.io/anaconda/)
 
+
+## Relation Virtual Machine and Cookbook Version
+
+* [Download Bayes environment Virtual Machine](https://q-brain2.riken.jp/bayes/vm/)
+
+|VirtualMachine|Cookbook|
+|:------------:|:------------:|
+|1.2.0|1.2.0|
+|1.3.0|1.3.0|
+|1.4.0|1.3.0 and upgrade by hand|
+
+
+
 ## TODO
 
 see [TODO](TODO.md)
