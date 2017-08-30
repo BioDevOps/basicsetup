@@ -259,9 +259,9 @@ conda env remove -n myenvironment
 
 |VirtualMachine|Cookbook Name|Cookbook Version|
 |:------------:|:------------:|:------------:|
-|1.2.0|basicsetup|1.2.0|
-|1.3.0|basicsetup|1.3.0|
-|1.4.0|basicsetup|1.3.0 and upgrade by hand|
+|[1.2.0](https://q-brain2.riken.jp/bayes/vm/bayesvm_1.2.0.ova)|basicsetup|1.2.0|
+|[1.3.0](https://q-brain2.riken.jp/bayes/vm/bayesvm_1.3.0.ova)|basicsetup|1.3.0|
+|[1.4.0](https://q-brain2.riken.jp/bayes/vm/bayesvm_1.4.0.ova)|basicsetup|1.3.0 and upgrade by hand|
 
 Next Release 1.5.0 cookbook name change is scheduled.
 
