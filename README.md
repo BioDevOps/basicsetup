@@ -252,6 +252,20 @@ conda env remove -n myenvironment
 
 * [Anaconda Distribution | Continuum Analytics: Documentation](https://docs.continuum.io/anaconda/)
 
+
+## Relation Virtual Machine and Cookbook Version
+
+* [Download Bayes environment Virtual Machine](https://q-brain2.riken.jp/bayes/vm/)
+
+|VirtualMachine|Cookbook Name|Cookbook Version|
+|:------------:|:------------:|:------------:|
+|[1.2.0](https://q-brain2.riken.jp/bayes/vm/bayesvm_1.2.0.ova)|basicsetup|1.2.0|
+|[1.3.0](https://q-brain2.riken.jp/bayes/vm/bayesvm_1.3.0.ova)|basicsetup|1.3.0|
+|[1.4.0](https://q-brain2.riken.jp/bayes/vm/bayesvm_1.4.0.ova)|basicsetup|1.3.0 and upgrade by hand|
+
+Next Release 1.5.0 cookbook name change is scheduled.
+
+
 ## TODO
 
 see [TODO](TODO.md)

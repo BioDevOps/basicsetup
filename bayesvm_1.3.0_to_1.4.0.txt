@@ -1,0 +1,24 @@
+# Remove biomaj
+sudo apt-get remove --purge biomaj
+sudo apt-get update
+# Remove empty directory
+# Because:
+#  https://askubuntu.com/questions/807994/apt-get-not-working-on-ubuntu-16-04-problems-with-kernel-packages
+sudo rmdir /etc/udev/rules.d/70-persistent-net.rules/
+sudo apt-get upgrade
+sudo apt-get clean
+sudo reboot
+sudo apt-get update
+sudo apt-get dist-upgrade
+sudo do-release-upgrade
+sudo reboot
+# Remove mrs
+sudo apt-get remove --purge mrs
+sudo reboot
+sudo apt-get clean
+# If you have some error message about mrs is not removed.
+# after the reboot
+# check mrs is not running
+ps aux | grep mrs
+sudo apt-get remove --purge mrs
+sudo reboot
